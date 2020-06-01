@@ -46,6 +46,8 @@ namespace artecrobo {
     }
 
     let I2C_buf = 0
+    let I2C_value_1st = 0
+    let I2C_value_2nd = 0
 
     /* M1 I2C address */
     let command_CW_M1 = 0
@@ -61,8 +63,10 @@ namespace artecrobo {
     let command_Brake_M2 = 11
     let command_power_M2 = 12
 
-    let I2C_value_1st = 0
-    let I2C_value_2nd = 0
+    I2C_value_1st = command_Brake_M1
+    I2C_send()
+    I2C_value_1st = command_Brake_M2
+    I2C_send()
 
     // Move DC motor
     //% blockId=artec_move_dc_motor
