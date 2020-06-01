@@ -1,4 +1,3 @@
-
 /**
  * Types of DC motor control
  */
@@ -98,7 +97,7 @@ namespace artecrobo {
     I2C_send()
 
     // Move DC motor
-    //% blockId=artec_move_dc_motor
+    //% blockId=artec_move_dc_motor group="DC Motor (New board)"
     //% block="DC motor %_connector| motion: %_motion"
     export function moveDCMotor(_connector: connectorDCMotor, _motion: DCmotion): void {
         if (_connector == connectorDCMotor.M1) {
@@ -142,7 +141,7 @@ namespace artecrobo {
     }
 
 
-    //% blockId=artec_set_speed_dc_motor
+    //% blockId=artec_set_speed_dc_motor group="DC Motor (New board)"
     //% block="DC motor %_connector| speed: %_speed"
     //% _speed.min=0 _speed.max=255
     export function setSpeedDCMotor(_connector: connectorDCMotor, _speed: number): void {
