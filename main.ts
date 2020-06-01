@@ -1,6 +1,23 @@
+
 /**
  * Types of DC motor control
  */
+enum LEDmotion {
+    //% block="ON"
+    ON,
+    //% block="OFF"
+    OFF
+}
+
+enum connectorLED {
+    //% block="P0"
+    P0,
+    //% block="P1"
+    P1,
+    //% block="P2"
+    P2
+}
+
 enum DCmotion {
     //% block="Forward"
     Forward,
@@ -19,10 +36,19 @@ enum connectorDCMotor {
     M2
 }
 
+enum connectorServoMotor {
+    //% block="P13"
+    P13 = AnalogPin.P13,
+    //% block="P14"
+    P14 = AnalogPin.P14,
+    //% block="P15"
+    P15 = AnalogPin.P15
+}
+
 /**
  * ArtecRobo control package
  */
-//% color=#5b99a5 weight=100 icon="\uf009" block="ArtecRobo_DC Motor"
+//% color=#5b99a5 weight=100 icon="\uf009" block="ArtecRobo"
 namespace artecrobo {
 
     function I2C_send() {
@@ -127,12 +153,12 @@ namespace artecrobo {
             I2C_value_1st = command_power_M1;
         else if (_connector == connectorDCMotor.M2)
             I2C_value_1st = command_power_M2;
-        
-        if (state == DCmotion.Forward || state == DCmotion.Backward) 
+
+        if (state == DCmotion.Forward || state == DCmotion.Backward)
             I2C_value_2nd = _speed
         else
             I2C_value_2nd = 0
-        
+
         I2C_send_2byte()
         basic.pause(20)
     }
