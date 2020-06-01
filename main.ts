@@ -25,6 +25,30 @@ enum connectorDCMotor {
 //% color=#5b99a5 weight=100 icon="\uf009" block="ArtecRobo_test"
 namespace artecrobo {
 
+    function I2C_send() {
+        I2C_buf = I2C_value_1st
+        pins.i2cWriteNumber(
+            62,
+            I2C_buf,
+            NumberFormat.Int8LE,
+            true
+        )
+    }
+
+    function I2C_send_2byte() {
+        I2C_buf = I2C_value_1st * 256 + I2C_value_2nd
+        pins.i2cWriteNumber(
+            62,
+            I2C_buf,
+            NumberFormat.Int16BE,
+            false
+        )
+    }
+
+    let I2C_value_1st = 0
+    let I2C_value_2nd = 0
+    let I2C_buf = 0
+
     /* M1 I2C address */
     let command_CW_M1 = 0
     let command_CCW_M1 = 1
@@ -43,7 +67,25 @@ namespace artecrobo {
     //% blockId=artec_move_dc_motor
     //% block="DC motor %_connector| motion: %_motion"
     export function moveDCMotor(_connector: connectorDCMotor, _motion: DCmotion): void {
+        if (connectorDCMotor.M1) {
+            switch (_motion) {
+                case DCmotion.Forward:
+                    I2C_value_1st = command_CW_M1;
+                    break;
+                case DCmotion.Backward:
+                    I2C_value_1st = command_CCW_M1;
+                    break;
+                case DCmotion.Brake:
+                    I2C_value_1st = command_Brake_M1;
+                    break;
+                case DCmotion.Coast:
+                    I2C_value_1st = command_Stop_M1;
+                    break;
+            }
+        }
+        else if (connectorDCMotor.M2) {
 
+        }
 
     }
 
