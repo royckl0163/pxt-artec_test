@@ -78,41 +78,41 @@ namespace artecrobo {
         if (_connector == connectorDCMotor.M1) {
             switch (_motion) {
                 case DCmotion.Forward:
-                    I2C_value_1st = command_CW_M1;
-                    break;
+                    I2C_value_1st = command_CW_M1
+                    break
                 case DCmotion.Backward:
-                    I2C_value_1st = command_CCW_M1;
-                    break;
+                    I2C_value_1st = command_CCW_M1
+                    break
                 case DCmotion.Brake:
-                    I2C_value_1st = command_Brake_M1;
-                    setSpeedDCMotor(connectorDCMotor.M1, 0);
-                    break;
-                case DCmotion.Coast:
-                    I2C_value_1st = command_Stop_M1;
+                    I2C_value_1st = command_Brake_M1
                     setSpeedDCMotor(connectorDCMotor.M1, 0)
-                    break;
+                    break
+                case DCmotion.Coast:
+                    I2C_value_1st = command_Stop_M1
+                    setSpeedDCMotor(connectorDCMotor.M1, 0)
+                    break
             }
         }
         else if (_connector == connectorDCMotor.M2) {
             switch (_motion) {
                 case DCmotion.Forward:
-                    I2C_value_1st = command_CW_M2;
-                    break;
+                    I2C_value_1st = command_CW_M2
+                    break
                 case DCmotion.Backward:
-                    I2C_value_1st = command_CCW_M2;
-                    break;
+                    I2C_value_1st = command_CCW_M2
+                    break
                 case DCmotion.Brake:
-                    I2C_value_1st = command_Brake_M2;
+                    I2C_value_1st = command_Brake_M2
                     setSpeedDCMotor(connectorDCMotor.M2, 0)
-                    break;
+                    break
                 case DCmotion.Coast:
-                    I2C_value_1st = command_Stop_M2;
+                    I2C_value_1st = command_Stop_M2
                     setSpeedDCMotor(connectorDCMotor.M2, 0)
-                    break;
+                    break
             }
         }
         I2C_send()
-        state = _motion;
+        state = _motion
     }
 
 
