@@ -112,6 +112,8 @@ namespace artecrobo {
     //% block="DC motor %_connector| speed: %_speed"
     //% _speed.min=0 _speed.max=255
     export function setSpeedDCMotor(_connector: connectorDCMotor, _speed: number): void {
+        if (_speed < 0) { _speed = 0; }
+        if (_speed > 255) { _speed = 255; }
         if (_connector == connectorDCMotor.M1)
             I2C_value_1st = command_power_M1;
         else if (_connector == connectorDCMotor.M2)
