@@ -72,7 +72,7 @@ namespace artecrobo {
     //% blockId=artec_move_dc_motor
     //% block="DC motor %_connector| motion: %_motion"
     export function moveDCMotor(_connector: connectorDCMotor, _motion: DCmotion): void {
-        if (connectorDCMotor.M1) {
+        if (_connector == connectorDCMotor.M1) {
             switch (_motion) {
                 case DCmotion.Forward:
                     I2C_value_1st = command_CW_M1;
@@ -88,7 +88,7 @@ namespace artecrobo {
                     break;
             }
         }
-        else if (connectorDCMotor.M2) {
+        else if (_connector == connectorDCMotor.M2) {
             switch (_motion) {
                 case DCmotion.Forward:
                     I2C_value_1st = command_CW_M2;
@@ -112,9 +112,9 @@ namespace artecrobo {
     //% block="DC motor %_connector| speed: %_speed"
     //% _speed.min=0 _speed.max=255
     export function setSpeedDCMotor(_connector: connectorDCMotor, _speed: number): void {
-        if (connectorDCMotor.M1)
+        if (_connector == connectorDCMotor.M1)
             I2C_value_1st = command_power_M1;
-        else if (connectorDCMotor.M2)
+        else if (_connector == connectorDCMotor.M2)
             I2C_value_1st = command_power_M2;
         I2C_value_2nd = _speed
         I2C_send_2byte()
