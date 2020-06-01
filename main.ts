@@ -22,7 +22,7 @@ enum connectorDCMotor {
 /**
  * ArtecRobo control package
  */
-//% color=#5b99a5 weight=100 icon="\uf009" block="ArtecRobo_test"
+//% color=#5b99a5 weight=100 icon="\uf009" block="ArtecRobo_DC Motor"
 namespace artecrobo {
 
     function I2C_send() {
