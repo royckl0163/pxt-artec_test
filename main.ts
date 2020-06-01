@@ -85,9 +85,11 @@ namespace artecrobo {
                     break;
                 case DCmotion.Brake:
                     I2C_value_1st = command_Brake_M1;
+                    setSpeedDCMotor(connectorDCMotor.M1, 0);
                     break;
                 case DCmotion.Coast:
                     I2C_value_1st = command_Stop_M1;
+                    setSpeedDCMotor(connectorDCMotor.M1, 0)
                     break;
             }
         }
@@ -101,9 +103,11 @@ namespace artecrobo {
                     break;
                 case DCmotion.Brake:
                     I2C_value_1st = command_Brake_M2;
+                    setSpeedDCMotor(connectorDCMotor.M2, 0)
                     break;
                 case DCmotion.Coast:
                     I2C_value_1st = command_Stop_M2;
+                    setSpeedDCMotor(connectorDCMotor.M2, 0)
                     break;
             }
         }
