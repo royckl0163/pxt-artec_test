@@ -110,7 +110,7 @@ namespace artecrobo {
 
     //% blockId=artec_set_speed_dc_motor
     //% block="DC motor %_connector| speed: %_speed"
-    //% _speed.min=0 _speed.max=1023
+    //% _speed.min=0 _speed.max=255
     export function setSpeedDCMotor(_connector: connectorDCMotor, _speed: number): void {
         if (connectorDCMotor.M1)
             I2C_value_1st = command_power_M1;
