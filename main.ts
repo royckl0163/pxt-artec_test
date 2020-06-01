@@ -49,6 +49,9 @@ namespace artecrobo {
     let I2C_value_1st = 0
     let I2C_value_2nd = 0
 
+    /* initial state */
+    let state = DCmotion.Brake;
+
     /* M1 I2C address */
     let command_CW_M1 = 0
     let command_CCW_M1 = 1
@@ -105,6 +108,7 @@ namespace artecrobo {
             }
         }
         I2C_send()
+        state = _motion;
     }
 
 
@@ -114,11 +118,17 @@ namespace artecrobo {
     export function setSpeedDCMotor(_connector: connectorDCMotor, _speed: number): void {
         if (_speed < 0) { _speed = 0; }
         if (_speed > 255) { _speed = 255; }
+
         if (_connector == connectorDCMotor.M1)
             I2C_value_1st = command_power_M1;
         else if (_connector == connectorDCMotor.M2)
             I2C_value_1st = command_power_M2;
-        I2C_value_2nd = _speed
+        
+        if (state == DCmotion.Forward || state == DCmotion.Backward) 
+            I2C_value_2nd = _speed
+        else
+            I2C_value_2nd = 0
+        
         I2C_send_2byte()
         basic.pause(20)
     }
