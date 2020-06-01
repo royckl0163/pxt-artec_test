@@ -74,9 +74,6 @@ namespace artecrobo {
     let I2C_value_1st = 0
     let I2C_value_2nd = 0
 
-    /* initial state */
-    let state = DCmotion.Brake;
-
     /* M1 I2C address */
     let command_CW_M1 = 0
     let command_CCW_M1 = 1
@@ -91,6 +88,8 @@ namespace artecrobo {
     let command_Brake_M2 = 11
     let command_power_M2 = 12
 
+    /* initial state */
+    let state = DCmotion.Brake;
     I2C_value_1st = command_Brake_M1
     I2C_send()
     I2C_value_1st = command_Brake_M2
@@ -139,7 +138,6 @@ namespace artecrobo {
         I2C_send()
         state = _motion
     }
-
 
     //% blockId=artec_set_speed_dc_motor group="DC Motor (New board)"
     //% block="DC motor %_connector| speed: %_speed"
