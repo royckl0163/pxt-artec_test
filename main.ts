@@ -34,7 +34,7 @@ namespace artecrobo {
     //% blockId=artec_move_dc_motor
     //% block="DC motor %_connector| motion: %_motion| speed: %_speed"
     export function moveDCMotor(_connector: connectorDCMotor, _motion: DCmotion, _speed: number): void {
-        
-        
+
+
     }
 } 
