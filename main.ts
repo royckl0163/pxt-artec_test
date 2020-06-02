@@ -365,7 +365,7 @@ namespace artecrobo {
     //% block="sound level %pin" group="Sensor"
     export function soundLevel(pin: AnalogPin): number {
         let max_reading = 28;
-        let value = Math.round(Math.sqrt(pins.analogReadPin(pin))); // to compensate for inverse square indoor lack of sensitivity
+        let value = Math.sqrt(pins.analogReadPin(pin)); // to compensate for inverse square indoor lack of sensitivity
         let sound_level = Math.round(pins.map(value, 3, max_reading, 0, 100));
         if (sound_level > 100) {
             sound_level = 100;
@@ -386,7 +386,7 @@ namespace artecrobo {
         else if (_tempUnit == tempUnit.F)
             return Math.round(temp_level * 1.8 + 32);
 
-        return temp_level;
+        return Math.round(temp_level);
     }
 
     /**
@@ -397,7 +397,7 @@ namespace artecrobo {
     //% blockId=artec_light_level_value group="Sensor"
     export function lightLevel(pin: AnalogPin): number {
         let max_reading = 32;
-        let value = Math.round(Math.sqrt(pins.analogReadPin(pin))); // to compensate for inverse square indoor lack of sensitivity
+        let value = Math.sqrt(pins.analogReadPin(pin)); // to compensate for inverse square indoor lack of sensitivity
         let light_level = Math.round(pins.map(value, 6, max_reading, 0, 100));
         if (light_level > 100) {
             light_level = 100;
