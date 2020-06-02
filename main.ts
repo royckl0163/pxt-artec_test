@@ -415,9 +415,9 @@ namespace artecrobo {
         let max_reading = 28;
         let value = Math.sqrt(pins.analogReadPin(pin)); // to compensate for inverse square indoor lack of sensitivity
         let IR_level = Math.round(pins.map(value, 6, max_reading, 0, 100));
-        if (IR_level > 50 && IR_level < 100)
+        if (IR_level > 20 && IR_level < 100)
             status = 1;
-            
+
         return status;
     }
 
