@@ -377,8 +377,8 @@ namespace artecrobo {
      * Measure the temperature in degrees C or F
      * @param pin The pin that the temerature sensor is attached to.
      */
-    //% block = "temperature value in | %_tempUnit | %_pin"
-    //% block group="Sensor"
+    //% block = "temperature value %_pin | unit: %_tempUnit"
+    //% blockId=artec_temp_level_value group="Sensor"
     export function tempLevel(_tempUnit: tempUnit, pin: AnalogPin): number {
         let temp_level = Math.round(pins.analogReadPin(pin) / 10)
         if (_tempUnit == tempUnit.C)
