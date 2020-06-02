@@ -44,6 +44,13 @@ enum connectorServoMotor {
     P15 = AnalogPin.P15
 }
 
+enum tempUnit {
+    //% block="C"
+    C,
+    //% block="F"
+    F
+}
+
 /**
  * ArtecRobo control package
  */
@@ -395,21 +402,19 @@ namespace artecrobo {
         }
     */
 
-    enum tempUnit{
-        //% block="C"
-        C,
-        //% block="F"
-        F
-    }
-
     /**
      * Measure the light level as a number between 0 and 100
      * @param pin The pin that the light sensor is attached to.
      */
     //% block = "temperature value in %_tempUnit | %_pin"
     //% block group="Sensor"
-    export function tempLevel(_pin: AnalogPin, _tempUnit: tempUnit): number {
-        let temp_level = pins.analogReadPin(_pin)
+    export function tempLevel(_tempUnit: tempUnit, pin: AnalogPin): number {
+        let temp_level = Math.round(pins.analogReadPin(pin))
+        if (_tempUnit == tempUnit.C)
+            return temp_level;
+        else if (_tempUnit == tempUnit.F)
+            return temp_level * 1.8 + 32;
+
         return temp_level;
     }
 
