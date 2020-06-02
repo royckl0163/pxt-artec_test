@@ -411,15 +411,14 @@ namespace artecrobo {
      */
     //% block="IR level %pin" group="Sensor"
     export function InfraredPhotoreflector(pin: AnalogPin): number {
+        let status = 0;
         let max_reading = 28;
         let value = Math.sqrt(pins.analogReadPin(pin)); // to compensate for inverse square indoor lack of sensitivity
         let IR_level = Math.round(pins.map(value, 6, max_reading, 0, 100));
         if (IR_level > 50 && IR_level < 100)
-            IR_level = 1
-        else
-            IR_level = 0
+            status = 1;
             
-        return IR_level
+        return status;
     }
 
     export enum SonarVersion {
