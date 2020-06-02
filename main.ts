@@ -372,12 +372,12 @@ namespace artecrobo {
         }
         return sound_level;
     }
-    
+
     /**
      * Measure the temperature in degrees C or F
      * @param pin The pin that the temerature sensor is attached to.
      */
-    //% block = "temperature value %_pin | unit: %_tempUnit" group="Sensor"
+    //% block="temperature value %_pin | unit: %_tempUnit" group="Sensor"
     //% blockId=artec_temp_level_value
     export function tempLevel(_tempUnit: tempUnit, pin: AnalogPin): number {
         let temp_level = Math.round(pins.analogReadPin(pin) / 10)
@@ -393,7 +393,8 @@ namespace artecrobo {
      * Measure the light level as a number between 0 and 100
      * @param pin The pin that the light sensor is attached to.
      */
-    //% block="light level %pin" group="Sensor"
+    //% block="light level %pin"
+    //% blockId=artec_light_level_value group="Sensor"
     export function lightLevel(pin: AnalogPin): number {
         let max_reading = 32;
         let value = Math.round(Math.sqrt(pins.analogReadPin(pin))); // to compensate for inverse square indoor lack of sensitivity
@@ -427,7 +428,7 @@ namespace artecrobo {
         V2 = 0x2
     }
     let distanceBuf = 0;
-    
+
 	/**
      * Measure the ultrasonic level as a number 
      * @param pin The pin that the ultrasonic is attached to.
