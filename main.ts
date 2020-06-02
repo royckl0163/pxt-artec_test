@@ -405,7 +405,7 @@ namespace artecrobo {
         return light_level;
     }
 
-	/**
+    /**
      * Measure the IR Photoreflector level as a number between 0 and 1 for Line Tracking
      * @param pin The pin that the IR Photoreflector is attached to.
      */
@@ -427,7 +427,7 @@ namespace artecrobo {
     }
     let distanceBuf = 0;
 
-	/**
+    /**
      * Measure the ultrasonic level as a number 
      * @param pin The pin that the ultrasonic is attached to.
      */
