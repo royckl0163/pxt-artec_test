@@ -1,22 +1,6 @@
 /**
  * Types of DC motor control
  */
-enum LEDmotion {
-    //% block="ON"
-    ON,
-    //% block="OFF"
-    OFF
-}
-
-enum connectorLED {
-    //% block="P0"
-    P0,
-    //% block="P1"
-    P1,
-    //% block="P2"
-    P2
-}
-
 enum DCmotion {
     //% block="Forward"
     Forward,
@@ -33,6 +17,22 @@ enum connectorDCMotor {
     M1,
     //% block="M2"
     M2
+}
+
+enum LEDmotion {
+    //% block="ON"
+    ON,
+    //% block="OFF"
+    OFF
+}
+
+enum connectorLED {
+    //% block="P0"
+    P0,
+    //% block="P1"
+    P1,
+    //% block="P2"
+    P2
 }
 
 enum connectorServoMotor {
@@ -365,8 +365,8 @@ namespace artecrobo {
     //% block="sound level %pin" group="Sensor"
     export function soundLevel(pin: AnalogPin): number {
         let max_reading = 28;
-        let value = Math.sqrt(pins.analogReadPin(pin)); // to compensate for inverse square indoor lack of sensitivity
-        let sound_level = Math.round(pins.map(value, 0, max_reading, 0, 100));
+        let value = Math.round(Math.sqrt(pins.analogReadPin(pin))); // to compensate for inverse square indoor lack of sensitivity
+        let sound_level = Math.round(pins.map(value, 3, max_reading, 0, 100));
         if (sound_level > 100) {
             sound_level = 100;
         }
