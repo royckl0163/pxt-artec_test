@@ -358,7 +358,7 @@ namespace artecrobo {
         }
     }
 
-	/**
+    /**
      * Measure the sound level as a number between 0 and 100
      * @param pin The pin that the mic is attached to.
      */
