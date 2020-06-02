@@ -355,7 +355,7 @@ namespace artecrobo {
      * Measure the sound level as a number between 0 and 100
      * @param pin The pin that the mic is attached to.
      */
-     //% blockId=artec_sound_level_value group="Sensor"
+    //% block = "sound sensor value" group="Sensor"
     export function soundLevel(pin: AnalogPin): number {
         let max_reading = 28;
         let value = Math.sqrt(pins.analogReadPin(pin)); // to compensate for inverse square indoor lack of sensitivity
@@ -399,7 +399,7 @@ namespace artecrobo {
      * Measure the light level as a number between 0 and 100
      * @param pin The pin that the light sensor is attached to.
      */
-    //% blockId=light_level_value group="Sensor"
+    //% block group="Sensor"
     export function lightLevel(pin: AnalogPin): number {
         let max_reading = 32;
         let value = Math.round(Math.sqrt(pins.analogReadPin(pin))); // to compensate for inverse square indoor lack of sensitivity
@@ -414,7 +414,7 @@ namespace artecrobo {
      * Measure the IR Photoreflector level as a number between 0 and 1 for Line Tracking
      * @param pin The pin that the IR Photoreflector is attached to.
      */
-    //% blockId=IR_value group="Sensor"
+    //% block group="Sensor"
     export function InfraredPhotoreflector(pin: AnalogPin): number {
         let max_reading = 28;
         let value = Math.sqrt(pins.analogReadPin(pin)); // to compensate for inverse square indoor lack of sensitivity
