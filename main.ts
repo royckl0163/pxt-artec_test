@@ -414,7 +414,7 @@ namespace artecrobo {
      * Measure the IR Photoreflector level as a number between 0 and 1 for Line Tracking
      * @param pin The pin that the IR Photoreflector is attached to.
      */
-    //% block group="Sensor"
+    //% blockId=light_level_value group="Sensor"
     export function InfraredPhotoreflector(pin: AnalogPin): number {
         let max_reading = 28;
         let value = Math.sqrt(pins.analogReadPin(pin)); // to compensate for inverse square indoor lack of sensitivity
