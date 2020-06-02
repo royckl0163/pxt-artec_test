@@ -356,7 +356,6 @@ namespace artecrobo {
      * @param pin The pin that the mic is attached to.
      */
      //% blockId=artec_sound_level_value group="Sensor"
-    //% block = "sound sensor value"
     export function soundLevel(pin: AnalogPin): number {
         let max_reading = 28;
         let value = Math.sqrt(pins.analogReadPin(pin)); // to compensate for inverse square indoor lack of sensitivity
