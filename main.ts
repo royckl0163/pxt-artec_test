@@ -403,7 +403,7 @@ namespace artecrobo {
     export function lightLevel(pin: AnalogPin): number {
         let max_reading = 32;
         let value = Math.round(Math.sqrt(pins.analogReadPin(pin))); // to compensate for inverse square indoor lack of sensitivity
-        let light_level = pins.map(value, 6, max_reading, 0, 100);
+        let light_level = Math.round(pins.map(value, 6, max_reading, 0, 100));
         if (light_level > 100) {
             light_level = 100;
         }
