@@ -414,13 +414,11 @@ namespace artecrobo {
         let max_reading = 28;
         let value = Math.sqrt(pins.analogReadPin(pin)); // to compensate for inverse square indoor lack of sensitivity
         let IR_level = Math.round(pins.map(value, 6, max_reading, 0, 100));
-        if (IR_level > 150 || IR_level < 20) {
-            IR_level = 0;
-        }
-        else {
-            IR_level = 1;
-        }
-        return IR_level;
+        if (IR_level > 30 && IR_level < 120)
+            IR_level = 1
+        else
+            IR_level = 0
+        return 0
     }
 
     export enum SonarVersion {
