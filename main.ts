@@ -418,7 +418,8 @@ namespace artecrobo {
             IR_level = 1
         else
             IR_level = 0
-        return 0
+            
+        return IR_level
     }
 
     export enum SonarVersion {
