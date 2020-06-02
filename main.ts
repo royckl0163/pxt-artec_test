@@ -382,7 +382,7 @@ namespace artecrobo {
     export function tempLevel(pin: AnalogPin, _tempUnit: tempUnit): number {
         let temp_level = pins.analogReadPin(pin) / 10
         if (_tempUnit == tempUnit.C)
-            return temp_level;
+            return Math.round(temp_level);
         else if (_tempUnit == tempUnit.F)
             return Math.round(temp_level * 1.8 + 32);
 
@@ -413,7 +413,7 @@ namespace artecrobo {
     export function InfraredPhotoreflector(pin: AnalogPin): number {
         let max_reading = 28;
         let value = Math.sqrt(pins.analogReadPin(pin)); // to compensate for inverse square indoor lack of sensitivity
-        let IR_level = Math.round(pins.map(value, 0, max_reading, 0, 100));
+        let IR_level = Math.round(pins.map(value, 6, max_reading, 0, 100));
         if (IR_level > 200) {
             IR_level = 0;
         }
