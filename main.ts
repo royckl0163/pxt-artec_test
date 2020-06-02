@@ -380,7 +380,7 @@ namespace artecrobo {
     //% block="temperature value %_pin | unit: %_tempUnit" group="Sensor"
     //% blockId=artec_temp_level_value
     export function tempLevel(pin: AnalogPin, _tempUnit: tempUnit): number {
-        let temp_level = Math.round(pins.analogReadPin(pin) / 10)
+        let temp_level = pins.analogReadPin(pin) / 10
         if (_tempUnit == tempUnit.C)
             return temp_level;
         else if (_tempUnit == tempUnit.F)
