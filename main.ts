@@ -389,6 +389,29 @@ namespace artecrobo {
         return Math.round(temp_level);
     }
 
+    enum tempUnit {
+        //% block="C"
+        C,
+        //% block="F"
+        F
+    }
+
+    /**
+     * Measure the light level as a number between 0 and 100
+     * @param pin The pin that the light sensor is attached to.
+     */
+    //% block = "temperature value in %_tempUnit | %pin"
+    //% block group="Sensor"
+    export function tempLevel(_tempUnit: tempUnit, pin: AnalogPin): number {
+        let temp_level = Math.round(pins.analogReadPin(pin))
+        if (_tempUnit == tempUnit.C)
+            return 0;
+        else if (_tempUnit == tempUnit.F)
+            return 1;
+
+        return 0;
+    }
+
     /**
      * Measure the light level as a number between 0 and 100
      * @param pin The pin that the light sensor is attached to.
